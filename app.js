@@ -1,29 +1,37 @@
-//Create element
-const li = document.createElement('li');
+// document.querySelector('.clear-tasks').addEventListener('click', function(e){
+//   console.log('Hello World');
 
-//Add class
-li.className = 'collection-item';
+//   //e.preventDefault();
+// });
 
-//Add id
+document.querySelector('.clear-tasks').addEventListener('click', onClick);
 
-li.id = 'new-item';
+function onClick(e){
+  //console.log('Clicked');
 
-//Add attribute
-li.setAttribute('title', 'New Item')
+  let val;
 
-//Create text node and append
-li.appendChild(document.createTextNode('Hello World'));
+  val = e;
 
-//Create new link element
-const link = document.createElement('a');
+  // Event target element
+  val = e.target;
+  val = e.target.id;
+  val = e.target.className;
+  val = e.target.classList;
 
-//Add classes
-link.className = 'delete-item secondary-content';
-// Add icon html
-link.innerHTML = '<i class="fa fa-remove"></i>';
+  // Event type
+  val = e.type;
 
-//Append link to li 
-li.appendChild(link);
-//Append li as child to ul
-document.querySelector('ul.collection').appendChild(li);
-console.log(li)
+  // Timestamp
+  val = e.timeStamp;
+
+  // Coords event relative to the window
+  val = e.clientY;
+  val = e.clientX;
+
+  // Coords event relative to the element
+  val = e.offsetY;
+  val = e.offsetX;
+  //e.target.innerText = 'Hello';
+  console.log(val);
+}
