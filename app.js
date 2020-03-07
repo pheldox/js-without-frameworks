@@ -1,37 +1,44 @@
-// document.querySelector('.clear-tasks').addEventListener('click', function(e){
-//   console.log('Hello World');
+ // set local storage item
+// localStorage.setItem('name', 'John');
+// localStorage.setItem('age', '30');
 
-//   //e.preventDefault();
-// });
+// set session storage item
+// sessionStorage.setItem('name', 'Beth');
 
-document.querySelector('.clear-tasks').addEventListener('click', onClick);
+// remove from storage
+// localStorage.removeItem('name');
 
-function onClick(e){
-  //console.log('Clicked');
+// get from storage
+// const name = localStorage.getItem('name');
+// const age = localStorage.getItem('age');
 
-  let val;
+// // clear local storage
+// localStorage.clear();
 
-  val = e;
+// console.log(name, age);
 
-  // Event target element
-  val = e.target;
-  val = e.target.id;
-  val = e.target.className;
-  val = e.target.classList;
-
-  // Event type
-  val = e.type;
-
-  // Timestamp
-  val = e.timeStamp;
-
-  // Coords event relative to the window
-  val = e.clientY;
-  val = e.clientX;
-
-  // Coords event relative to the element
-  val = e.offsetY;
-  val = e.offsetX;
-  //e.target.innerText = 'Hello';
-  console.log(val);
-}
+document.querySelector('form').addEventListener('submit', function(e){
+    const task = document.getElementById('task').value;
+  
+    let tasks;
+  
+    if(localStorage.getItem('tasks') === null) {
+      tasks = [];
+    } else {
+      tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+  
+    tasks.push(task);
+  
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  
+    alert('Task saved');
+  
+    e.preventDefault();
+  });
+  
+  const tasks = JSON.parse(localStorage.getItem('tasks'));
+  
+  tasks.forEach(function(task){
+    console.log(task);
+  });
